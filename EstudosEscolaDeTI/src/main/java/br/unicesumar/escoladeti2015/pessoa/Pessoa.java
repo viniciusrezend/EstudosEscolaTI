@@ -13,16 +13,16 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     
+    private Long registro;
     private String nome;
     private int idade;
     private Veiculo veiculo;
 
     public Pessoa() {
     }
-    
-    
 
-    public Pessoa(String nome, int idade, Veiculo veiculo) {
+    public Pessoa(Long registro, String nome, int idade, Veiculo veiculo) {
+        this.registro = registro;
         this.nome = nome;
         this.idade = idade;
         this.veiculo = veiculo;
@@ -30,6 +30,10 @@ public class Pessoa {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getRegistro() {
+        return registro;
     }
 
     public String getNome() {
@@ -42,6 +46,10 @@ public class Pessoa {
 
     public Veiculo getVeiculo() {
         return veiculo;
+    }
+
+    public void setRegistro(Long registro) {
+        this.registro = registro;
     }
 
     public void setNome(String nome) {
@@ -58,8 +66,9 @@ public class Pessoa {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 73 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.registro);
         return hash;
     }
 
@@ -75,18 +84,19 @@ public class Pessoa {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
+        if (!Objects.equals(this.registro, other.registro)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", idade=" + idade + ", veiculo=" + veiculo + '}';
+        return "Pessoa{" + "id=" + id + ", registro=" + registro + ", nome=" + nome + ", idade=" + idade + ", veiculo=" + veiculo + '}';
     }
     
     
     
     
-    
-    
-    
+
 }

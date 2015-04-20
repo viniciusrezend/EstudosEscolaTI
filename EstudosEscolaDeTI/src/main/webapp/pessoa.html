@@ -1,10 +1,41 @@
-<html>
+<html ng-app="Pessoa">
     <head>
         <title>Teste Pessoa</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="../algular.min.js"></script>
+        <script src="pessoa.js"></script>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body ng-controller="PessoController" ng-init="iniciar()">
+        Registro
+        <input type="text" ng-disable="!isNovo" ng-model="pessoa.registro">
+        <br/>
+        Nome
+        <input type="text" ng-model="pessoa.nome">  
+        <br/>
+        Idade
+        <input type="text" ng-model="pessoa.idade">
+        <br/>
+        Veiculo
+        <input type="text" ng-mdel="pessoa.veiculo">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Veiculo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="p in pessoas">
+                    <td>{{p.nome}}</td>
+                    <td>{{p.idade}}</td>
+                    <td>{{p.veiculo}}</td>
+                    <td>
+                        <a href="#" ng-click="excluir(p)">Excluir</a>
+                        <a href="#" ng-click="editar(p)">Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>    
     </body>
 </html>
