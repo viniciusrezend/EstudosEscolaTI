@@ -2,7 +2,7 @@
     <head>
         <title>Teste Pessoa</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="../algular.min.js"></script>
+        <script src= "../angular.min.js"></script>
         <script src="pessoa.js"></script>
     </head>
     <body ng-controller="PessoController" ng-init="iniciar()">
@@ -17,6 +17,8 @@
         <br/>
         Veiculo
         <input type="text" ng-mdel="pessoa.veiculo">
+        <button ng-click="salvar()">Salvar</button>
+        
         <table border="1">
             <thead>
                 <tr>

@@ -1,4 +1,4 @@
-module = angular.module(Pessoa, []);
+module = angular.module("EstudosEscolaDeTI",[]);
 
 module.controller("PessoaController", ["$scope", "$http", PessoaController]);
 
