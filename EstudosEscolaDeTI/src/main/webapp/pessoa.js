@@ -1,8 +1,8 @@
 module = angular.module("EstudosEscolaDeTI",[]);
 
-module.controller("PessoaController", ["$scope", "$http", PessoaController]);
+module.controller("PessoaVeiculoController", ["$scope", "$http", PessoaVeiculoController]);
 
-function PessoaController($scope, $http) {
+function PessoaVeiculoController($scope, $http) {
     $scope.iniciar = funcaoIniciar;
     $scope.salvar = funcaoSalvar;
     $scope.exluir = funcaoExcluir;
@@ -61,11 +61,12 @@ function PessoaController($scope, $http) {
     }
     
     function funcaoIniciar(){
-        console.log("Iniciando")
+        console.log("Iniciando");
         funcaoCarregar();
-        console.log("Pessoas carregadas")
+        console.log("Pessoas carregadas");
         
     }
+    
 
 }
 
