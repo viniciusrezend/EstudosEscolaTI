@@ -23,11 +23,11 @@ public class Pessoa {
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-        name="pessoa_veiculo",
-    joinColumns={
-    @JoinColumn(name = "pessoa_id", referencedColumnName = "id")},
-    inverseJoinColumns={
-    @JoinColumn(name = "veiculo_id", referencedColumnName = "id")})
+       name = "pessoa_veiculo",
+    joinColumns = {
+        @JoinColumn(name = "pessoa_id", referencedColumnName = "id")},
+    inverseJoinColumns = {
+        @JoinColumn(name = "veiculo_id", referencedColumnName = "id")})
     private Set<Veiculo> veiculos = new HashSet<>();
 
     public Pessoa() {
