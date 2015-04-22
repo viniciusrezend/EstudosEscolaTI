@@ -18,7 +18,7 @@ function PessoaVeiculoController($scope, $http) {
     }
 
     function funcaoExcluir(vitima) {
-        $http.delete("/pessoas/" + vitima.registro).success(onSuccess).error(onError);
+        $http.delete("/pessoas/" + vitima.id).success(onSuccess).error(onError);
         function onSuccess(data, status) {
             console.log(data);
             funcaoCarregar();
