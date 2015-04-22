@@ -37,12 +37,12 @@ public class PessoaVeiculoService {
         this.veiculoRepo.delete(v);
     }
     
-    public List<Map<String, Object>> getVeiculosDasPessoas(Long pessoaId){
+    public List<Map<String, Object>> getVeiculosDasPessoasViaSQL(Long pessoaId){
         List<Map<String, Object>> veiculos;
         final MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("id", pessoaId);
         veiculos = jdbcTemplate.query(
-                "select v.id, v.nome"
+                "select v.id, v.modelo"
                 +"from veiculo v"
                 +"inner join pessoa_veiculo pv on pv.veiculo_id = p.id"
                 +"where pv.pessoa_id =:id", params,new MapRowMapper());
@@ -50,15 +50,11 @@ public class PessoaVeiculoService {
         return veiculos;        
     }
     
-    
-    
-    
-    
     public Set<Veiculo> getPessoasESeusVeiculos(Long pessoaId){
         return this.pessoaRepo.getOne(pessoaId).getVeiculos();
     }
     
-    public Set<Pessoa> getPessoasEVeiculos(Long veiculoId){
+    public Set<Pessoa> getVeiculosDasPessoas(Long veiculoId){
         return this.veiculoRepo.getOne(veiculoId).getPessoas();
     }
     

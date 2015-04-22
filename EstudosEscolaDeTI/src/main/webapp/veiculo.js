@@ -8,17 +8,17 @@ function PessoaVeiculoController($scope, $http) {
     $scope.exluir = funcaoExcluir;
     $scope.editar = funcaoEditar;
 
-    $scope.pessoa = {};
-    $scope.pessoas = [];
+    $scope.veiculo = {};
+    $scope.veiculos = [];
     $scope.isNovo = true;
 
     function funcaoEditar(vitima) {
-        $scope.pessoa = angular.copy(vitima);
+        $scope.veiculo = angular.copy(vitima);
         $scope.isNovo = false;
     }
 
     function funcaoExcluir(vitima) {
-        $http.delete("/pessoas/" + vitima.id).success(onSuccess).error(onError);
+        $http.delete("/veiculos/" + vitima.id).success(onSuccess).error(onError);
         function onSuccess(data, status) {
             console.log(data);
             funcaoCarregar();
@@ -31,14 +31,14 @@ function PessoaVeiculoController($scope, $http) {
 
     function funcaoSalvar() {
         if ($scope.isNovo) {
-            $http.post("/pessoas", $scope.pessoa).success(onSuccess).error(onError);
+            $http.post("/veiculos", $scope.veiculo).success(onSuccess).error(onError);
         } else {
-            $http.put("/pessoas", $scope.pessoa).success(onSuccess).error(onError);
+            $http.put("/veiculos", $scope.veiculo).success(onSuccess).error(onError);
         }
         function onSuccess(data, status) {
             console.log(data);
             funcaoCarregar();
-            $scope.pessoa = {};
+            $scope.veiculo = {};
             $scope.isNovo = true;
         }
         function onError(data, status) {
@@ -48,10 +48,10 @@ function PessoaVeiculoController($scope, $http) {
     }
     
     function funcaoCarregar(){
-        $http.get("/pessoas").success(onSuccess).error(onError);
+        $http.get("/veiculos").success(onSuccess).error(onError);
         
         function onSuccess(data, status) {
-            $scope.pessoas = data;
+            $scope.veiculos = data;
             console.log(data);
         }
         function onError(data, status) {
@@ -63,7 +63,7 @@ function PessoaVeiculoController($scope, $http) {
     function funcaoIniciar(){
         console.log("Iniciando");
         funcaoCarregar();
-        console.log("Pessoas carregadas");
+        console.log("Veiculos carregadas");
         
     }
     
